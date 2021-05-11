@@ -1,0 +1,34 @@
+version: '3.4'
+
+networks:
+  billboard:
+    driver: bridge
+
+services:
+
+  billboard_api:
+    image: billboard_api:latest
+    depends_on:
+      - "postgres_image"
+    build:
+      context: ./billboard-server
+      dockerfile: dockerfile
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      DB_CONNECTION_STRING: "host=postgres_image;port=5432;database=billboard;username=user;password=password"
+    networks:
+      - billboard
+
+  postgres_image:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    restart: always
+    environment:
+      POSTGRES_USER: "user"
+      POSTGRES_PASSWORD: "password"
+      POSTGRES_DB: "billboard"
+    networks:
+      - billboard
