@@ -31,7 +31,7 @@ namespace billboard_server.Migrations
             }
             
             var hits = Read<dynamic>("./seeds/charts.json")
-                .Where(a => a.date > "2016-12-31")
+                .Where(a => a.date > "2017-12-31" && toInt(a.rank) < 41)
                 .Select(a => new object[]
                 {
                     Guid.NewGuid().ToString("N"),
