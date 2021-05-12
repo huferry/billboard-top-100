@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using billboard_server.Database;
 using billboard_server.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -12,6 +13,7 @@ using Microsoft.Extensions.Logging;
 namespace billboard_server.Controllers
 {
     [ApiController]
+    [EnableCors("MyPolicy")]
     [Route("/api/[controller]")]
     public class SongHitController : ControllerBase
     {

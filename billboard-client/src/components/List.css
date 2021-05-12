@@ -1,0 +1,35 @@
+.up {
+    background-image: url('https://icons.iconarchive.com/icons/icons8/ios7/16/Arrows-Up-icon.png');
+    padding-left: 24px;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: x-start;
+    color: green;
+}
+
+.down {
+    background-image: url('https://icons.iconarchive.com/icons/icons8/ios7/16/Arrows-Down-icon.png');
+    padding-left: 28px;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: x-start;
+    color: red;
+}
+
+.stay {
+    background-image: url('https://icons.iconarchive.com/icons/icons8/ios7/16/Science-Plasmid-icon.png');
+    padding-left: 24px;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: x-start;
+    color: white;
+}
+
+.new {
+    background-image: url('https://icons.iconarchive.com/icons/icons8/ios7/16/Astrology-Summer-icon.png');
+    padding-left: 24px;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: x-start;
+    color: white;
+}

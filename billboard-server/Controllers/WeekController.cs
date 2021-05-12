@@ -2,12 +2,14 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using billboard_server.Database;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace billboard_server.Controllers
 {
     [ApiController]
+    [EnableCors("MyPolicy")]
     [Route("/api/[controller]")]
     public class WeekController : Controller
     {

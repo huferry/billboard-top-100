@@ -28,6 +28,15 @@ namespace billboard_server
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddCors(option =>
+            {
+                option.AddPolicy("MyPolicy", builder =>
+                {
+                    builder.AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .AllowAnyOrigin();
+                });
+            });
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -45,6 +54,7 @@ namespace billboard_server
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "billboard_server v1"));
             
             app.UseRouting();
+            app.UseCors("MyPolicy");
 
             app.UseAuthorization();
 
@@ -52,6 +62,7 @@ namespace billboard_server
             {
                 endpoints.MapControllers();
             });
+
 
             app.UseDatabaseMigration();
         }
