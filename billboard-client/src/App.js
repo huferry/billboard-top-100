@@ -12,6 +12,7 @@ function App() {
       <div className="logo"/>
       <WeekPicker onChanged={setDate}/>
       <List date={date}/>
+      <div>API: { process.env.REACT_APP_API }</div>
     </div>
   );
 }

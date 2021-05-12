@@ -20,7 +20,7 @@ const WeekPicker = ({ onChanged }) => {
     useEffect(() => {
         if (years.length > 0) return
 
-        axios.get(`http://localhost/api/Week`)
+        axios.get(`${process.env.REACT_APP_API}/Week`)
             .then(res => {
                 const dates = res.data.map(d => new Date(d))
                 const years = unique(dates.map(d => d.getFullYear())).sort()

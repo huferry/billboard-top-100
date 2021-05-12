@@ -20,7 +20,7 @@ const List = ({date}) => {
     useEffect(() => {
         if (!date) return
         
-        axios.get(`http://localhost/api/SongHit?year=${year}&month=${month}&day=${day}`)
+        axios.get(`${process.env.REACT_APP_API}/SongHit?year=${year}&month=${month}&day=${day}`)
              .then(res => {
                     const list = res.data
                         .sort((a,b) => a.rank - b.rank)

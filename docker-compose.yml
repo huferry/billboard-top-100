@@ -14,10 +14,24 @@ services:
       context: ./billboard-server
       dockerfile: dockerfile
     ports:
-      - "80:80"
+      - "81:80"
       - "443:443"
     environment:
       DB_CONNECTION_STRING: "host=postgres_image;port=5432;database=billboard;username=user;password=password"
+    networks:
+      - billboard
+
+  billboard_frontend:
+    image: billboard_frontend:latest
+    depends_on:
+      - "billboard_api"
+    build:
+      context: ./billboard-client
+      dockerfile: dockerfile
+    ports:
+      - "80:3000"
+    environment: 
+      REACT_APP_API: "http://localhost:81/api"
     networks:
       - billboard
 
