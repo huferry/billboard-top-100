@@ -51,4 +51,10 @@ docker service create \
 # Scaling Web server to 2 replicas
 docker service scale billweb=2
 
+# Run the whole setup in a swarm stack
+# - Stack doesn't build the image because it's based,
+#   on services. You will need to have the images already.
+# - Front end            : http://localhost
+# - API server's swagger : http://localhost:81/swagger
+docker stack deploy -c billboard-top40-app-stack.yml billtop40
 ```

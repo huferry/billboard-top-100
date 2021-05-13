@@ -20,6 +20,11 @@ namespace billboard_server.Controllers
             _applicationDbContext = applicationDbContext;
         }
 
+        /// <summary>
+        /// Get the available weeks.
+        /// </summary>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>The available weeks with top 40 list.</returns>
         [HttpGet]
         public async Task<IActionResult> Get(CancellationToken cancellationToken)
         {

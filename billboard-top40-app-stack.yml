@@ -1,0 +1,61 @@
+version: '3.4'
+
+networks:
+  billboard:
+    driver: overlay
+
+services:
+
+  billboard_api:
+    image: billboard_api:latest
+    depends_on:
+      - "postgres_image"
+    ports:
+      - "81:80"
+      - "443:443"
+    environment:
+      DB_CONNECTION_STRING: "host=postgres_image;port=5432;database=billboard;username=user;password=password"
+    networks:
+      - billboard
+    deploy:
+      replicas: 3
+      update_config:
+        parallelism: 3
+      restart_policy:
+        condition: on-failure
+
+  billboard_frontend:
+    image: billboard_frontend:latest
+    depends_on:
+      - "billboard_api"
+    ports:
+      - "80:3000"
+    environment: 
+      REACT_APP_API: "http://localhost:81/api"
+    networks:
+      - billboard
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 2
+      restart_policy:
+        condition: on-failure
+
+
+  postgres_image:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    restart: always
+    environment:
+      POSTGRES_USER: "user"
+      POSTGRES_PASSWORD: "password"
+      POSTGRES_DB: "billboard"
+    networks:
+      - billboard
+    deploy:
+      replicas: 1
+      update_config:
+        parallelism: 2
+      restart_policy:
+        condition: on-failure

@@ -26,6 +26,18 @@ namespace billboard_server.Controllers
             _applicationDbContext = applicationDbContext;
         }
 
+        /// <summary>
+        /// Get the song hits by the week.
+        /// </summary>
+        /// <param name="year">The year of the list.</param>
+        /// <param name="month">The month of the list.</param>
+        /// <param name="day">The day of the list.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>The top 40 list of the week or NotFound if the no list available for the week.</returns>
+        /// <remarks>
+        /// The list is published on Saturdays. When the given date is not a Saturday
+        /// then it will return the list of the Saturday prior to the given date.
+        /// </remarks>
         [HttpGet]
         public async Task<IActionResult> GetByWeek(int year, int month, int day, CancellationToken cancellationToken)
         {
