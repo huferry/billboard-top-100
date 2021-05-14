@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: db
+  labels:
+    name: postgres-service
+    app: billtop40
+spec:
+  selector:
+    name: postgres-pod
+    app: billtop40    
+  ports:
+  - port: 5432
+    targetPort: 5432

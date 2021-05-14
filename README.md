@@ -1,4 +1,29 @@
 
+# Build and Push
+
+**Login to Docker Hub**
+```bash
+docker login -u <your-docker-id>
+# you will be prompted for the password
+```
+
+**API Server**
+```bash
+# Go to the server directory
+cd ./billboard-server
+
+# Build the image
+docker build -t <your-docker-id>/billboard-server .
+```
+**WEB Server**
+```bash
+# Go to the web server directory
+cd ./billboard-client
+
+# Build the image
+docker build -t <your-docker-id>/billboard-web .
+```
+
 # Docker Compose
 ```bash
 # Please inspect the file docker-compose.yml

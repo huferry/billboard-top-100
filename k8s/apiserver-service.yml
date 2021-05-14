@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: apiserver
+  labels:
+    name: billtop40-server-service
+    app: billtop40
+spec:
+  selector:
+    name: billtop40-server-pod
+    app: billtop40    
+  ports:
+  - port: 80
+    targetPort: 80
