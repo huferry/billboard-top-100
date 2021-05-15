@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: billtop40-web-pod
+  labels:
+    name: billtop40-web-pod
+    app: billtop40
+spec:
+  containers:
+  - name: billtop40-web
+    image: huferry/billboard-web
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 3000
+    env:
+      - name: REACT_APP_API
+        value: "http://apiserver/api"

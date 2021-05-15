@@ -9,12 +9,8 @@ spec:
   containers:
   - name: billtop40-server-pod
     image: huferry/billboard-server
-    resources:
-      limits:
-        memory: "128Mi"
-        cpu: "500m"
     ports:
       - containerPort: 80
     env:        
       - name: DB_CONNECTION_STRING
-        value: "host=service/db;port=5432;database=billboard;username=user;password=password"
+        value: "host=db;port=5432;database=billboard;username=user;password=password"
